@@ -1,4 +1,4 @@
-class Solution {
+class Solution { // copyyspp
     public int numMagicSquaresInside(int[][] grid) {
         int r = grid.length, c = grid[0].length, ans = 0;
         if (r < 3 || c < 3) return 0;
