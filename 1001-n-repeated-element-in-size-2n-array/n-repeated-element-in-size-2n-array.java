@@ -1,4 +1,5 @@
-class Solution {
+class Solution { // done....
+
     public int repeatedNTimes(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
 
