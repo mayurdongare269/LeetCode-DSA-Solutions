@@ -13,9 +13,9 @@
  *     }
  * }
  */
-class Solution {
+class Solution { // same as 865.Smallest Subtree with all the Deepest Nodes
 
-     Map<Integer, Integer> dMap = new HashMap<>(); //  d == depth
+    Map<Integer, Integer> dMap = new HashMap<>(); //  d == depth
     int maxD = 0;
 
     private void findD(TreeNode root, int d) {
