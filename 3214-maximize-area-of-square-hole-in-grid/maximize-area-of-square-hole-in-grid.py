@@ -1,4 +1,6 @@
-class Solution:
+# not solved
+
+class Solution: 
     def maximizeSquareHoleArea(self, n: int, m: int, hBars: list[int], vBars: list[int]) -> int:
         def maxSpan(bars: list[int]) -> int:
             bars.sort()
