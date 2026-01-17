@@ -5,7 +5,7 @@ class Solution {
         if(n <= 0) return false;
         return (n & (n - 1)) == 0;
 
-        //M-II
+        //M-II =- good and easy to remember
         // if (n <= 0) return false;
         // while (n % 2 == 0) {
         //     n /= 2;
