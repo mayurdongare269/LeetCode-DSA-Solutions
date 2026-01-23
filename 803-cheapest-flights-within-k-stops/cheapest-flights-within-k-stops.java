@@ -2,22 +2,44 @@ import java.util.*;
 
 class Solution {
 
+    // Edge class
     static class Edge {
-        int src, dest, wt;
+        int src;
+        int dest;
+        int wt;
+
         Edge(int s, int d, int w) {
-            src = s;
-            dest = d;
-            wt = w;
+            this.src = s;
+            this.dest = d;
+            this.wt = w;
         }
     }
 
+    // Info class for BFS
+    static class Info {
+        int v;
+        int cost;
+        int stops;
+
+        Info(int v, int c, int s) {
+            this.v = v;
+            this.cost = c;
+            this.stops = s;
+        }
+    }
+
+    // Create graph
     private void createGraph(int[][] flights, ArrayList<Edge>[] graph) {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
         }
 
-        for (int[] f : flights) {
-            graph[f[0]].add(new Edge(f[0], f[1], f[2]));
+        for (int i = 0; i < flights.length; i++) {
+            int src = flights[i][0];
+            int dest = flights[i][1];
+            int wt = flights[i][2];
+
+            graph[src].add(new Edge(src, dest, wt));
         }
     }
 
@@ -26,46 +48,38 @@ class Solution {
         ArrayList<Edge>[] graph = new ArrayList[n];
         createGraph(flights, graph);
 
-        int[] dist = new int[n];
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
+        // dist array (as discussed – NO Arrays.fill)
+        int dist[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i != src) {
+                dist[i] = Integer.MAX_VALUE;
+            }
+        }
 
-        // BFS levels = stops
-        for (int i = 0; i <= k; i++) {
-            int[] temp = dist.clone();
+        Queue<Info> q = new LinkedList<>();
+        q.add(new Info(src, 0, 0));
 
-            for (EdgeListNode node : getEdges(graph)) {
-                int u = node.u;
-                int v = node.v;
-                int wt = node.wt;
+        while (!q.isEmpty()) {
+            Info curr = q.remove();
 
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + wt < temp[v]) {
-                    temp[v] = dist[u] + wt;
+            if (curr.stops > k) {
+                continue;
+            }
+
+            for (Edge e : graph[curr.v]) {
+                int u = e.src;
+                int v = e.dest;
+                int wt = e.wt;
+
+                if (curr.cost + wt < dist[v] && 
+                    curr.stops <= k) { // dist[u] -> curr.cost
+
+                    dist[v] = curr.cost + wt;
+                    q.add(new Info(v, dist[v], curr.stops + 1));
                 }
             }
-            dist = temp;
         }
 
         return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];
-    }
-
-    // Helper to flatten graph edges
-    static class EdgeListNode {
-        int u, v, wt;
-        EdgeListNode(int u, int v, int wt) {
-            this.u = u;
-            this.v = v;
-            this.wt = wt;
-        }
-    }
-
-    private List<EdgeListNode> getEdges(ArrayList<Edge>[] graph) {
-        List<EdgeListNode> list = new ArrayList<>();
-        for (ArrayList<Edge> edges : graph) {
-            for (Edge e : edges) {
-                list.add(new EdgeListNode(e.src, e.dest, e.wt));
-            }
-        }
-        return list;
     }
 }
