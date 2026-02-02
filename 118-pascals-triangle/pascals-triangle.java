@@ -1,24 +1,29 @@
+import java.util.*;
+
 class Solution {
-    public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> triangle = new ArrayList<>();
 
-        for (int i = 0; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>();
+    // Generates a single row using nCr logic
+    private List<Integer> generateRow(int row) {
+        long ans = 1;
+        List<Integer> ansRow = new ArrayList<>();
+        ansRow.add(1); // first element is always 1
 
-            for (int j = 0; j <= i; j++) {
-                // First and last elements in a row are always 1
-                if (j == 0 || j == i) {
-                    row.add(1);
-                } else {
-                    // Sum of the two numbers directly above
-                    int sum = triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j);
-                    row.add(sum);
-                }
-            }
-
-            triangle.add(row);
+        for (int i = 1; i < row; i++) {
+            ans = ans * (row - i);
+            ans = ans / i;
+            ansRow.add((int) ans);
         }
 
-        return triangle;
+        return ansRow;
+    }
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        for (int i = 1; i <= numRows; i++) {
+            ans.add(generateRow(i));
+        }
+
+        return ans;
     }
 }
