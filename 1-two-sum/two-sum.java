@@ -27,6 +27,7 @@ class Solution {
 
         // sort by value
         Arrays.sort(arr, (a, b) -> a[0] - b[0]);
+        // or Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
 
         int l = 0, r = n - 1;
 
