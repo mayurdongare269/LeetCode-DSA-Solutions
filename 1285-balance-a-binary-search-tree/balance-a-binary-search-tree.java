@@ -28,6 +28,7 @@ class Solution {
 
     }
 
+    //Construct balanced BST from sorted list
     private TreeNode construct(int l, int r, List<Integer> list) {
         if(l > r) {
             return null;
