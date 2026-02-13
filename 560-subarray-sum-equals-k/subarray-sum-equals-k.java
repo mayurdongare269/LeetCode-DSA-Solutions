@@ -17,5 +17,21 @@ class Solution {
         }
 
         return ans;
+
+
+        // int left=0, sum=0;
+
+        // for(int right=0; right<n; right++){
+        //     sum += arr[right];
+
+        //     while(sum > target){
+        //         sum -= arr[left++];
+        //     }
+
+        //     if(sum == target){
+        //         System.out.println("Found");
+        //         return;
+        //     }
+        // }
     }
 }
