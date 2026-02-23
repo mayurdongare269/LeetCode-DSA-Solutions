@@ -1,4 +1,4 @@
-class Solution {
+class Solution { // easy one
     public boolean hasAllCodes(String s, int k) {
         HashSet<String> st = new HashSet<>();
         int n = s.length();
