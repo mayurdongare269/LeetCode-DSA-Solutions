@@ -30,7 +30,7 @@ class Solution {
         while(r < n) {
             if(nums[r] == 0) zeros++;
 
-            while(zeros > k) { // add if then its become optiomal O(n)
+            if(zeros > k) { // add if then its become optiomal O(n)
                 if(nums[l] == 0) zeros--;
                 l++;
             }
