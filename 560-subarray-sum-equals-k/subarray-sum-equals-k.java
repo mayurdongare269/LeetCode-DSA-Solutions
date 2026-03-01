@@ -10,7 +10,7 @@ class Solution {
             sum +=  nums[i];
 
             if(map.containsKey(sum - k)) {
-                ans += map.get(sum - k); //How many times has (sum - k) appeared before .. so we add freq..
+                ans += map.get(sum - k); //means: How many times has (sum - k) appeared before .. so we add freq..
             }
 
             // or ans += map.getOrDefault((sum-k), 0);
