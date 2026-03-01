@@ -13,6 +13,8 @@ class Solution {
                 ans += map.get(sum - k);
             }
 
+            // or ans += map.getOrDefault((sum-k), 0);
+
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
 
