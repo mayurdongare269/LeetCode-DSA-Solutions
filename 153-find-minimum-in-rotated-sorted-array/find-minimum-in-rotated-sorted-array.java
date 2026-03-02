@@ -21,10 +21,10 @@ class Solution {
         // return nums[low];
 
 
-        //Method2: striver method YT
+        //Method2: striver method YT - also need to remember this aaproach so remember first one
         int n = nums.length;
         int low = 0, high = n - 1;
-        int ans = Integer.MAX_VALUE;
+        int ans = Integer.MAX_VALUE; 
 
         while(low <= high) {
             int mid = low + (high - low) / 2;
