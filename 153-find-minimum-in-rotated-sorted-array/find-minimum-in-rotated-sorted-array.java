@@ -1,5 +1,5 @@
 class Solution {
-    public int findMin(int[] nums) {
+    public int findMin(int[] nums) { // remeber it ... low < high
         int low = 0, high = nums.length - 1;
 
         while (low < high) {
