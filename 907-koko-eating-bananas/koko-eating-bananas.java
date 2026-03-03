@@ -22,7 +22,7 @@ class Solution {
     }
 
     public int minEatingSpeed(int[] piles, int h) {
-        int low = 1, high = findmax(piles); 
+        int low = 0, high = findmax(piles); 
         int ans = Integer.MAX_VALUE;
 
         while(low <= high) {
