@@ -1,6 +1,7 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List result = new ArrayList<>();
+        // List result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
         // Initialize boundaries
         int top = 0;                        // Starting row
