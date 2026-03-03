@@ -27,5 +27,11 @@ class Solution {
         }
 
         return -1;
+
+        // for(int key : map.keySet()) {
+        //     if(map.get(key) > n / 2) {
+        //         return key;
+        //     }
+        // }
     }
 }
