@@ -29,11 +29,11 @@ class Solution {
 
             // sum += ceil(nums[mid] / mid);
 
-            if(sum > threshold) {
-                low = mid + 1;
-            } else {
+            if(sum <= threshold) {
                 result = mid;
                 high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
 
