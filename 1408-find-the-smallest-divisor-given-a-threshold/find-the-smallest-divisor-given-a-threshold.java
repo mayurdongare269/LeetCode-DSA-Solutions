@@ -23,7 +23,8 @@ class Solution {
             int sum = 0; // ✅ Reset sum for each divisor attempt ** 
 
             for(int num : nums) {
-                sum += (num + mid - 1)/mid;  // this is ceil(num / mid)****
+                // sum += (num + mid - 1)/mid;  // this is ceil(num / mid)****
+                sum += Math.ceil((double) num / mid);
             }
 
             // sum += ceil(nums[mid] / mid);
