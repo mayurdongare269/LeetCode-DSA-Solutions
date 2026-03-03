@@ -1,4 +1,4 @@
-class Solution { ///ccppppp
+class Solution { ///ccppppp ... this que is in ByteArc coding event ....
     public String longestPalindrome(String s) {
         if (s == null || s.length() < 1) return "";
 
