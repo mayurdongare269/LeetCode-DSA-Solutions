@@ -1,5 +1,4 @@
-// Added using AI
-class Solution {
+class Solution { //just
     public int minimumDistance(int[] nums) {
         int n = nums.length ;
         if (n <= 2) return -1 ;
