@@ -12,5 +12,16 @@ class Solution {
         }
 
         return i + 1;
+
+        // //for arr 
+        // int length = i + 1;
+
+        // //Print only unique elements
+        // for(int k = 0; k < length; k++) {
+        //     System.out.print(nums[k] + " ");
+        // }
+
+        // return length;
+
     }
 }
