@@ -1,6 +1,8 @@
 class Solution {
     // mayur dongare
     public int majorityElement(int[] nums) {
+
+        // Boyer–Moore Majority Vote Algorithm
         // int count = 0;
         // int candidate = 0;
 
