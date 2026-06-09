@@ -22,6 +22,5 @@ class Solution {
         }
 
         return prev; // head = prev
-
     }
 }
