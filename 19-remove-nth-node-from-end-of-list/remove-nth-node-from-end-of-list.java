@@ -10,33 +10,59 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        if(head == null) return null;
+        // method 1 : Time Complexity: O(L)+O(L-N)
+        // if(head == null) return null;
 
-        ListNode temp = head;
-        int cnt = 0;
+        // ListNode temp = head;
+        // int cnt = 0;
 
-        while(temp != null) {
-            cnt++;
-            temp = temp.next;
+        // while(temp != null) {
+        //     cnt++;
+        //     temp = temp.next;
+        // }
+
+        // if(cnt == n) { // if n is as tot length, so we need to remove head
+        //     return head.next; // return so that below code never runs
+        // }
+
+        // int len = cnt - n; // as we need to reach the 1 node previous of the target node so this formula used -> do dry run if any doubt
+        // temp = head;
+
+        // while(temp != null) {
+        //     len--;
+        //     if(len == 0) {
+        //         break;
+        //     }
+        //     temp = temp.next;
+        // }
+
+        // temp.next = temp.next.next;
+
+        // return head;
+
+        // method 2: fast-slow pointer(Time Complexity: O(N) 
+        // see YT Video if forgot
+
+        ListNode fast = head;
+        ListNode slow = head;
+
+        for(int i = 1; i <= n; i++) {
+            fast = fast.next;
         }
 
-        if(cnt == n) { // if n is as tot length, so we need to remove head
-            return head.next; // return so that below code never runs
+        if(fast == null) { // as if n == length of list then we need to remove head...
+            return head.next;
         }
 
-        int len = cnt - n; // as we need to reach the 1 node previous of the target node so this formula used -> do dry run if any doubt
-        temp = head;
-
-        while(temp != null) {
-            len--;
-            if(len == 0) {
-                break;
-            }
-            temp = temp.next;
+        // now move both with one step and slow will be at our required position(target - 1)
+        while(fast.next != null) { // make sure fast.next
+            slow = slow.next;
+            fast = fast.next;
         }
 
-        temp.next = temp.next.next;
+        slow.next = slow.next.next;
 
         return head;
+        
     }
 }
