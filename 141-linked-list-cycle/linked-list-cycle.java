@@ -25,5 +25,7 @@ public class Solution {
         }
 
         return false;
+
+        // another method using map but it takes O(N) space..
     }
 }
