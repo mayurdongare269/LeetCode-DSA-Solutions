@@ -32,6 +32,7 @@ class Solution {
         ListNode right = prev;
         ListNode left = head;
 
+        // check like two pointers
         while(right != null) {
             if(right.val != left.val) {
                 return false;
