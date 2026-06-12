@@ -28,33 +28,52 @@ public class Solution {
 
         // return null;
 
-        // M-2: Optimal- TC: O(n1 + 2n2) & SC: O(1)
-        ListNode t1 = headA;
-        int n1 = 0; // cnt length of first list
+        // // M-2: Optimal- TC: O(n1 + 2n2) & SC: O(1)
+        // ListNode t1 = headA;
+        // int n1 = 0; // cnt length of first list
 
-        while(t1 != null) {
-            n1++;
-            t1 = t1.next;
+        // while(t1 != null) {
+        //     n1++;
+        //     t1 = t1.next;
+        // }
+
+        // ListNode t2 = headB;
+        // int n2 = 0; // cnt length of second list
+
+        // while(t2 != null) {
+        //     n2++;
+        //     t2 = t2.next;
+        // }
+
+        // // now compare and which length is large move it (large - small) lenght forwar. and then start traversing
+        // if(n1 < n2) {
+        //     return collisionPoint(headA, headB, n2-n1); // hear list2 is large 
+        // } else {
+        //     return collisionPoint(headB, headA, n1 - n2); // sequence must be correst..first small then large list
+        // }
+
+        // M-3: TC: O(n1 + n2) & SC:O(1) -> see video and remember logic!!!
+        if(headA == null || headB == null) return null;
+
+        ListNode temp1 = headA;
+        ListNode temp2 = headB;
+
+        while(temp1 != temp2) {
+            temp1 = temp1.next;
+            temp2 = temp2.next;
+
+            if(temp1 == temp2) return temp1; // or temp2
+
+            if(temp1 == null) temp1 = headB;
+            if(temp2 == null) temp2 = headA;
         }
 
-        ListNode t2 = headB;
-        int n2 = 0; // cnt length of second list
+        return temp1;
 
-        while(t2 != null) {
-            n2++;
-            t2 = t2.next;
-        }
-
-        // now compare and which length is large move it (large - small) lenght forwar. and then start traversing
-        if(n1 < n2) {
-            return collisionPoint(headA, headB, n2-n1); // hear list2 is large 
-        } else {
-            return collisionPoint(headB, headA, n1 - n2); // sequence must be correst..first small then large list
-        }
-
-        // return null;
     }
 
+
+    // func for M-2 approach
     public static ListNode collisionPoint(ListNode t1, ListNode t2, int d) {
         while(d != 0) {
             d--;
