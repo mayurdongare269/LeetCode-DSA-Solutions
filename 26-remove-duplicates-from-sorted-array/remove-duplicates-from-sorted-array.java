@@ -11,7 +11,7 @@ class Solution {
             }
         }
 
-        return i + 1;
+        return i + 1; // i stores last unique index, so unique count = i + 1
 
         // //for arr 
         // int length = i + 1;
