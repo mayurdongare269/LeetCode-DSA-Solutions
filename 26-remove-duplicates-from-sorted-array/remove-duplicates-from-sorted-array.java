@@ -6,7 +6,7 @@ class Solution {
         int i = 0;
         for(int j = 1; j < n; j++) {
             if(nums[j] != nums[i]) {
-                i++;
+                i++; // here inc bz -> first value is always as it is we just need to modify from idx 1 so idx 0 must be as it is...
                 nums[i] = nums[j];
             }
         }
@@ -22,6 +22,5 @@ class Solution {
         // }
 
         // return length;
-
     }
 }
