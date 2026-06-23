@@ -46,3 +46,92 @@ class Solution {
         }
     }
 }
+
+/*
+NEXT PERMUTATION - INTUITION
+
+Example:
+1 2 7 4 3 1
+
+Step 1: Find Break Point
+--------------------------------
+Traverse from right and find first index
+where nums[i] < nums[i+1].
+
+1 2 7 4 3 1
+  ^
+idx = 1 (value = 2)
+
+Why?
+Because the right part (7 4 3 1) is already
+in decreasing order and cannot generate a
+larger permutation by itself.
+
+--------------------------------
+
+Step 2: Find Just Greater Element
+--------------------------------
+Traverse from right and find first element
+greater than nums[idx].
+
+1 2 7 4 3 1
+        ^
+        3
+
+Swap:
+
+1 3 7 4 2 1
+
+Why?
+We want the smallest possible increase.
+
+--------------------------------
+
+Step 3: Reverse the Right Part
+--------------------------------
+Current array:
+
+1 3 7 4 2 1
+
+Reverse elements after idx.
+
+1 3 | 7 4 2 1
+      ↓
+1 3 | 1 2 4 7
+
+Result:
+
+1 3 1 2 4 7
+
+This is the next lexicographically
+greater permutation.
+
+--------------------------------
+
+Special Case:
+--------------------------------
+If no breakpoint exists:
+
+3 2 1
+
+Array is already the largest permutation.
+
+Answer:
+
+1 2 3
+
+(reverse entire array)
+
+--------------------------------
+
+Algorithm:
+1. Find breakpoint from right.
+2. If no breakpoint:
+      reverse whole array and return.
+3. Find first greater element from right.
+4. Swap with breakpoint.
+5. Reverse suffix after breakpoint.
+
+Time Complexity  : O(n)
+Space Complexity : O(1)
+*/
