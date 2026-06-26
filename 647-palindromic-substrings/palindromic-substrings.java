@@ -1,26 +1,26 @@
 class Solution {
-
-    private boolean check(String s, int i, int j) {
-        if(i >= j) {
-            return true;
-        }
-
-        if(s.charAt(i) == s.charAt(j)) {
-            return check(s, i+1, j-1);
-        }
-
-        return false;
-    }
     public int countSubstrings(String s) {
         int count = 0;
-        int n = s.length();
 
-        for(int i = 0; i < n; i++) {
-            for(int j = i; j < n; j++) {
-                if(check(s, i, j)) {
-                    count++;
-                }
-            }
+        for(int i=0;i<s.length();i++){
+            count += expand(s,i,i);
+            count += expand(s,i,i+1);
+        }
+        return count;
+    }
+
+    private static int expand(String s,int left,int right){
+
+        int count = 0;
+
+        while(left>=0 &&
+            right<s.length() &&
+            s.charAt(left)==s.charAt(right)){
+
+            count++;
+
+            left--;
+            right++;
         }
 
         return count;
