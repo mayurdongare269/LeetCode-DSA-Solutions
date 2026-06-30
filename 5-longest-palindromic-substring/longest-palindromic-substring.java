@@ -1,32 +1,79 @@
-class Solution { ///ccppppp ... this que is in ByteArc coding event ....
-    public String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) return "";
+class Solution {
+    // // (Brute Force + Recursion)
 
-        int start = 0, end = 0;
+    // boolean isPalindrome(String s, int i, int j) {
+
+    //     if (i >= j)
+    //         return true;
+
+    //     if (s.charAt(i) == s.charAt(j))
+    //         return isPalindrome(s, i + 1, j - 1);
+
+    //     return false;
+    // }
+
+    // public String longestPalindrome(String s) {
+
+    //     int maxLen = 0;
+    //     int start = 0;
+
+    //     for (int i = 0; i < s.length(); i++) {
+
+    //         for (int j = i; j < s.length(); j++) {
+
+    //             if (isPalindrome(s, i, j)) {
+
+    //                 if (j - i + 1 > maxLen) {
+    //                     maxLen = j - i + 1;
+    //                     start = i;
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     return s.substring(start, start + maxLen);
+    // }
+
+    int[][] dp = new int[1001][1001];
+
+    boolean solve(String s, int i, int j) {
+
+        if (i >= j)
+            return true;
+
+        if (dp[i][j] != -1)
+            return dp[i][j] == 1;
+
+        if (s.charAt(i) == s.charAt(j))
+            return (dp[i][j] = solve(s, i + 1, j - 1) ? 1 : 0) == 1;
+
+        dp[i][j] = 0;
+
+        return false;
+    }
+
+    public String longestPalindrome(String s) {
+
+        for (int[] row : dp)
+            Arrays.fill(row, -1);
+
+        int maxLen = 0;
+        int start = 0;
 
         for (int i = 0; i < s.length(); i++) {
-            // Odd length palindrome
-            int len1 = expandFromCenter(s, i, i);
-            // Even length palindrome
-            int len2 = expandFromCenter(s, i, i + 1);
 
-            int len = Math.max(len1, len2);
+            for (int j = i; j < s.length(); j++) {
 
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
+                if (solve(s, i, j)) {
+
+                    if (j - i + 1 > maxLen) {
+                        maxLen = j - i + 1;
+                        start = i;
+                    }
+                }
             }
         }
 
-        return s.substring(start, end + 1);
-    }
-
-    // Helper method to expand around center
-    private int expandFromCenter(String s, int left, int right) {
-        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-            left--;
-            right++;
-        }
-        return right - left - 1; // length of palindrome
+        return s.substring(start, start + maxLen);
     }
 }
