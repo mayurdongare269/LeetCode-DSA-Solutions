@@ -18,6 +18,18 @@ class Solution {
         List<Integer> res = new ArrayList<>();
         preorder(root, res);
         return res;
+
+        // // M2: iterative - not possible in preorder
+        // Stack<TreeNode> st = new Stack<>();
+        // List<Integer> res = new ArrayList<>();
+        // TreeNode node = root;
+
+        // while(true) {
+        //     if(node != null) {
+                
+        //     }
+        // }
+
     }
 
     private void preorder(TreeNode root, List<Integer> res) {
