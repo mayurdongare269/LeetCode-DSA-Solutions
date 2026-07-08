@@ -14,9 +14,11 @@
  * }
  */
 class Solution {
-    public int diameterOfBinaryTree(TreeNode root) {
+    public int diameterOfBinaryTree(TreeNode root) { // 2 methods to solve.. 
         return diameter(root).diam - 1;
     }
+
+    // M2: TC: O(n)
 
     public class Info {
         int diam;
