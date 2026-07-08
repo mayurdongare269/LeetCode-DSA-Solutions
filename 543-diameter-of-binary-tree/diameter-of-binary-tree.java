@@ -14,23 +14,33 @@
  * }
  */
 class Solution {
-    private int diameter = 0;
-
     public int diameterOfBinaryTree(TreeNode root) {
-        depth(root);
-        return diameter;
+        return diameter(root).diam - 1;
     }
 
-    private int depth(TreeNode node) {
-        if (node == null) return 0;
+    public class Info {
+        int diam;
+        int ht;
 
-        int left = depth(node.left);
-        int right = depth(node.right);
-
-        // Update diameter: max of current diameter and path through this node
-        diameter = Math.max(diameter, left + right);
-
-        // Return max depth of subtree rooted at this node
-        return Math.max(left, right) + 1;
+        public Info(int diam, int ht) {
+            this.diam = diam;
+            this.ht = ht;
+        }
     }
+
+    public Info diameter(TreeNode root) {
+        if(root == null) {
+            return new Info(0, 0);
+        }
+
+        Info lInfo = diameter(root.left);
+        Info rInfo = diameter(root.right);
+
+        int diam = Math.max(Math.max(lInfo.diam, rInfo.diam), lInfo.ht+rInfo.ht+1);
+        int ht = Math.max(lInfo.ht, rInfo.ht) + 1;
+
+        return new Info(diam, ht);
+    }
+
+
 }
