@@ -28,7 +28,7 @@ class Solution {
         // int len = cnt - n; // as we need to reach the 1 node previous of the target node so this formula used -> do dry run if any doubt
         // temp = head;
 
-        // while(temp != null) {
+        // while(temp != null) { // use Apana clg approach
         //     len--;
         //     if(len == 0) {
         //         break;
@@ -46,7 +46,7 @@ class Solution {
         ListNode fast = head;
         ListNode slow = head;
 
-        for(int i = 1; i <= n; i++) {
+        for(int i = 1; i <= n; i++) { // remember
             fast = fast.next;
         }
 
