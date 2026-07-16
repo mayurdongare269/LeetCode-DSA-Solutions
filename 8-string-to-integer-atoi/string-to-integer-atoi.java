@@ -20,7 +20,7 @@ class Solution {
 
         long num = 0;
 
-        while (i < s.length() && Character.isDigit(s.charAt(i))) {
+        while (i < s.length() && Character.isDigit(s.charAt(i))) { // i < s.length() - most imp***
 
             num = num * 10 + (s.charAt(i) - '0'); // convert to integer.. remember "num * 10"
 
