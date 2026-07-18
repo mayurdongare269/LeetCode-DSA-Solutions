@@ -1,32 +1,43 @@
 class Solution {
     public int findGCD(int[] nums) {
-        // Arrays.sort(nums);
-
-        // int a = nums[0];
-        // int b = nums[nums.length - 1];
-
-        // manually find min and max without sorting
-        int min = nums[0];
-        int max = nums[0];
+        int small = Integer.MAX_VALUE;
+        int large = Integer.MIN_VALUE;
 
         for(int num : nums) {
-            if(num < min) min = num;
-            if(num > max) max = num;
+            if(num < small) {
+                small = num;
+            } 
+            if(num > large) {
+                large = num;
+            }
         }
 
-        int ans = gcd(min, max);
-        return ans;
+        return findGCD(small, large);
     }
 
-    //// Euclidean Algorithm
-    private int gcd(int a, int b) {
-        if(b == 0) return a;
-        return gcd(b, a % b);
-        // while(b!=0) {
-        //     int temp = b;
-        //     b = a % b;
-        //     a = temp;
-        // }
-        // return a;
+    private int findGCD(int a, int b) {
+        while(a > 0 && b > 0) {
+            if(b > a) {
+                b = b % a;
+            }
+            else {
+                a = a % b;
+            }
+        }
+
+        if(a == 0) return b;
+
+        return a; 
     }
 }
+
+// private int gcd(int a, int b) {
+
+//     while(b != 0) {
+//         int temp = b;
+//         b = a % b;
+//         a = temp;
+//     }
+
+//     return a;
+// }
