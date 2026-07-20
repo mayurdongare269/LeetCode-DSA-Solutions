@@ -39,12 +39,21 @@ class Solution {
     }
 
     public static ListNode findNthNode(ListNode temp, int k) {
-        int cnt = 1;
+        // int cnt = 1;
 
-        while(temp != null) {
-            if(cnt == k) return temp;
-            cnt++;
+        // while(temp != null) {
+        //     if(cnt == k) return temp;
+        //     cnt++;
+        //     temp = temp.next;
+        // }
+
+        int i = 1; 
+
+        int idxToFind = k;
+
+        while(i < k) {
             temp = temp.next;
+            i++;
         }
 
         return temp;
