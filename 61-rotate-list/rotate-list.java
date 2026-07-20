@@ -9,7 +9,7 @@
  * }
  */
 class Solution {
-    public ListNode rotateRight(ListNode head, int k) { // O(n) & O(1)
+    public ListNode rotateRight(ListNode head, int k) { // O(2n) & O(1)
         if(head == null || k == 0) return head;
 
         //1. locate tail at last and calculate length of list
