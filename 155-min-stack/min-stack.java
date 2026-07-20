@@ -1,56 +1,95 @@
 import java.util.Stack;
 
 class MinStack {
-    private Stack<Long> stack;  // Using Long to prevent integer overflow
-    private long min;           // Using Long for consistency
+    private Stack<Long> st; // long to overcome Java overflows
+    private long mini;
 
+    // Empty Constructor
     public MinStack() {
-        stack = new Stack<>();
+        st = new Stack<>();
     }
-    
-    public void push(int val) {
-        if (stack.isEmpty()) {
-            stack.push((long)val);
-            min = val;
-        } else {
-            if (val >= min) {
-                stack.push((long)val);
-            } else {
-                // Push modified value (2L*val - min) to handle large numbers
-                stack.push(2L * val - min);
-                min = val;
-            }
-        }
-    }
-    
-    public void pop() {
-        if (stack.isEmpty()) {
+
+    // Method to push a value in stack
+    public void push(int value) {
+        // If stack is empty
+        if (st.isEmpty()) {
+            // Update the minimum value
+            mini = value;
+
+            // Push current value as minimum
+            st.push((long)value);
             return;
         }
-        long popped = stack.pop();
-        if (popped < min) {
-            // Restore previous min using long to prevent overflow
-            min = 2L * min - popped;
-        }
-    }
-    
-    public int top() {
-        if (stack.isEmpty()) {
-            return -1;
-        }
-        long top = stack.peek();
-        if (top >= min) {
-            return (int)top;
+
+        // If the value is greater than the minimum
+        if (value > mini) {
+            st.push((long)value);
         } else {
-            // Top is actually the current min
-            return (int)min;
+            // Add the modified value to stack
+            st.push(2L * value - mini);
+            // Update the minimum
+            mini = value;
         }
     }
-    
-    public int getMin() {
-        if (stack.isEmpty()) {
-            return -1;
+
+    // Method to pop a value from stack
+    public void pop() {
+        // Base case
+        if (st.isEmpty()) return;
+
+        // Get the top
+        long x = st.pop();
+
+        // If the modified value was added to stack
+        if (x < mini) {
+            // Update the minimum
+            mini = 2 * mini - x;
         }
-        return (int)min;
+    }
+
+    // Method to get the top of stack
+    public int top() {
+        // Base case
+        if (st.isEmpty()) return -1;
+
+        // Get the top
+        long x = st.peek();
+
+        // Return top if minimum is less than the top
+        if (mini < x) return (int)x;
+
+        // Otherwise return mini
+        return (int)mini;
+    }
+
+    // Method to get the minimum in stack
+    public int getMin() {
+        // Return the minimum
+        return (int)mini;
     }
 }
+
+public class Main {
+    public static void main(String[] args) {
+        MinStack s = new MinStack();
+
+        // Function calls
+        s.push(-2);
+        s.push(0);
+        s.push(-3);
+        System.out.print(s.getMin() + " ");
+        s.pop();
+        System.out.print(s.top() + " ");
+        s.pop();
+        System.out.print(s.getMin());
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(value);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
