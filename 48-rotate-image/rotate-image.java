@@ -11,9 +11,9 @@ class Solution {
             }
         }
 
-        //reverse
-        for(int i = 0; i < n; i++) {
-            int l = 0; 
+        //reverse row
+        for(int i = 0; i < n; i++) { // i for rows
+            int l = 0;  // l & r for column
             int r = n - 1;
             while(l < r) {
                 int t = matrix[i][l];
