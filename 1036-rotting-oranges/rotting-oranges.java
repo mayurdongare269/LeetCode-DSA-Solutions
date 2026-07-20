@@ -3,7 +3,6 @@ class Solution {
 
     public int orangesRotting(int[][] grid) {
         
-        // If the grid is empty, return 0
         if (grid.length == 0) return 0;
 
         // Get number of rows and columns
@@ -19,7 +18,7 @@ class Solution {
         // Queue to store positions of rotten oranges
         Queue<int[]> rotten = new LinkedList<>();
 
-        // Traverse the grid to populate total oranges and initial rotten positions
+        // add in que all the positon of 2(rotten)
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 
