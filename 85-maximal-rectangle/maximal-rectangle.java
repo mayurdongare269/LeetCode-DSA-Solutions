@@ -1,68 +1,66 @@
 class Solution {
     public int maximalRectangle(char[][] matrix) {
-        if(matrix == null || matrix.length == 0) return 0;
+        int n = matrix.length; //row
+        int m = matrix[0].length; //column
 
-        int n = matrix.length;
-        int m = matrix[0].length;
-        int[][] psum = new int[n][m];
-        int maxArea = 0;
+        int maxArea = 0; 
+        int[][] prefSum = new int[n][m];
 
-        //build prefix_sum heights col-wise
-        for(int j = 0; j < m; j++) {
+        //first calculate prefix sum
+        for(int j = 0; j < m; j++) { // as we have to move top to bottom and complete 4 columns
             int sum = 0;
             for(int i = 0; i < n; i++) {
-                if(matrix[i][j] == '1') {
-                    sum += 1;
-                } else {
+                // sum += matrix[i][j]; matrix is char hence this is not works we need to increase sum like below
+                if(matrix[i][j] == '0') {
                     sum = 0;
+                } else {
+                    sum = sum + 1;
                 }
-                psum[i][j] = sum;
+                
+                prefSum[i][j] = sum;
             }
         }
 
-        //for each row, apply largestRectangellARea
+        // calculate the area row wise using largetHistogram 
         for(int i = 0; i < n; i++) {
-            maxArea = Math.max(maxArea, largestRectangleArea(psum[i]));
+            maxArea = Math.max(maxArea, largestHistogram(prefSum[i])); // pass each row to function
         }
 
         return maxArea;
     }
 
+    public int largestHistogram(int[] h) {
+        int n = h.length;
 
-    // leetcode 84... 
-    private int largestRectangleArea(int[] heights) {
-        // The rectangle's width = nextSmaller - prevSmaller - 1.
-        // The area = height * width
-        // nse - next smaller element
         Stack<Integer> st = new Stack<>();
-        int n = heights.length;
         int maxArea = 0;
 
         for(int i = 0; i < n; i++) {
-            while(!st.isEmpty() && heights[st.peek()] > heights[i]) {
-                int elm = st.pop();
+            while(!st.isEmpty() && h[st.peek()] >= h[i]) {
+                int element = st.pop();
+
                 int nse = i;
                 int pse = st.isEmpty() ? -1 : st.peek();
 
                 int width = nse - pse - 1;
-                int area = heights[elm] * width;
-
+                int area = h[element] * width;
                 maxArea = Math.max(maxArea, area);
             }
+
             st.push(i);
         }
 
-        // Process remaining elements in the stack
         while(!st.isEmpty()) {
-                int elm = st.pop();
-                int nse = n;
-                int pse = st.isEmpty() ? -1 : st.peek();
+            int element = st.pop();
 
-                int width = nse - pse - 1;
-                int area = heights[elm] * width;
+            int nse = n;
+            int pse = st.isEmpty() ? -1 : st.peek();
 
-                maxArea = Math.max(maxArea, area);
+            int width = nse - pse - 1;
+            int area = h[element] * width;
+            maxArea = Math.max(maxArea, area);
         }
+
         return maxArea;
     }
 }
