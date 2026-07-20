@@ -1,28 +1,29 @@
-class StockSpanner { // monotonic stack problem ... striver soln
+class StockSpanner {
 
-    private Stack<int[]> st;  // Stack of [val, index]
-    private int ind;
+    List<Integer> prices;
+    Stack<Integer> st;
 
     public StockSpanner() {
+        prices = new ArrayList<>();
         st = new Stack<>();
-        ind = -1;
     }
-    
-    public int next(int val) {
-        ind++;
 
-        while (!st.isEmpty() && st.peek()[0] <= val) {
+    public int next(int price) {
+
+        prices.add(price);
+        int idx = prices.size() - 1;
+
+        while (!st.isEmpty() && prices.get(st.peek()) <= price) {
             st.pop();
         }
 
-        int ans = st.isEmpty() ? ind + 1 : ind - st.peek()[1];
+        int span = st.isEmpty() ? idx + 1 : idx - st.peek();
 
-        st.push(new int[]{val, ind});
+        st.push(idx);
 
-        return ans;
+        return span;
     }
 }
-
 
 /**
  * Your StockSpanner object will be instantiated and called as such:
