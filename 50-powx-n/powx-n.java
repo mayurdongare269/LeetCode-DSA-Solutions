@@ -26,7 +26,7 @@ class Solution {
         double ans = 1.0;
         long nn = n;
 
-        if(nn < 0) nn = -1 * nn;
+        if(nn < 0) nn = -1 * nn; // here no 'L' beacuase nn is long... if its int then we need to add -1L...
 
         while(nn > 0) {
             if(nn % 2 == 1) {
