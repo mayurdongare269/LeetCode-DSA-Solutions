@@ -58,7 +58,7 @@ class Solution {
             hash[s.charAt(r) - 'A']++;
             maxFreq = Math.max(maxFreq, hash[s.charAt(r) - 'A']);
 
-            if((r - l + 1) - maxFreq > k) { // remember condition
+            if((r - l + 1) - maxFreq > k) { // remember condition... (r - l + 1) - maxFreq  -> changes required
                 hash[s.charAt(l) - 'A']--;
                 l = l + 1;
             }
