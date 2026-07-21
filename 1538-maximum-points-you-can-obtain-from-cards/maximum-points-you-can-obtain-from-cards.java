@@ -1,5 +1,5 @@
 class Solution {
-    public int maxScore(int[] cardPoints, int k) { // easy one 
+    public int maxScore(int[] cardPoints, int k) { // easy one ..pattern 1 que-> 1. Constant Window 
         int n = cardPoints.length;
         int lSum = 0, maxSum = 0;
 
