@@ -38,7 +38,7 @@ class Solution {
         // return ans;
 
 
-        //Method3: Optimal O(n) & O(1)
+        //Method3: Optimal O(4n) & O(1)
         return helper(nums, goal) - helper(nums, goal-1);
         
     }
