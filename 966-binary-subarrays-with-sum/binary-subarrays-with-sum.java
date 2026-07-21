@@ -44,7 +44,8 @@ class Solution {
     }
 
     public int helper(int[] nums, int goal) {
-        if(goal < 0) return 0;
+        if(goal < 0) return 0; // bz of goal - 1...
+        
         int n = nums.length;
         int l = 0, r = 0, cnt = 0, sum = 0;
 
