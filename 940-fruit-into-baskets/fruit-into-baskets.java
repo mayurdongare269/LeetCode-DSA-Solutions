@@ -1,5 +1,6 @@
 class Solution {
     public int totalFruit(int[] fruits) {
+
         // Method 2: Optimal O(n) & O(3)
         int left = 0, right = 0, maxLen = 0;
         Map<Integer, Integer> basket = new HashMap<>();
@@ -21,6 +22,8 @@ class Solution {
 
         return maxLen;
 
+        // -----------------------------------------
+
         // //Method 1 : Brute O(n2) - TLE
         // int n = fruits.length;
         // int maxLen = 0;
@@ -36,6 +39,29 @@ class Solution {
         //         currCnt++;
         //     }
         //     maxLen = Math.max(currCnt, maxLen);
+        // }
+
+        // return maxLen;
+
+        // ========================?
+        //M1 : Brute force using set
+        // int n = fruits.length;
+        // int maxLen = 0;
+
+        // for (int i = 0; i < n; i++) {
+
+        //     HashSet<Integer> set = new HashSet<>();
+
+        //     for (int j = i; j < n; j++) {
+
+        //         set.add(fruits[j]);
+
+        //         if (set.size() <= 2) {
+        //             maxLen = Math.max(maxLen, j - i + 1);
+        //         } else {
+        //             break;
+        //         }
+        //     }
         // }
 
         // return maxLen;
