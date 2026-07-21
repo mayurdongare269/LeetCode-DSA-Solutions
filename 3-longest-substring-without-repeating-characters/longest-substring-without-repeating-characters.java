@@ -18,7 +18,7 @@ class Solution {
 
         // return maxLen;
 
-        // // Method-2
+        // // Method-2 - easy
         int n = s.length();
         int[] hash = new int[256];
         Arrays.fill(hash, -1);
