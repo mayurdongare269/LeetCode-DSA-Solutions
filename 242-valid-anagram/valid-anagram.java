@@ -1,5 +1,5 @@
 class Solution {
-    public boolean isAnagram(String s1, String s2) {
+    public boolean isAnagram(String s, String t) {
         // HashMap<Character, Integer> map = new HashMap<>();
 
         // for(int i = 0; i < s.length(); i++) {
@@ -41,21 +41,42 @@ class Solution {
         //no return at last 
         //beacuse There is no way for the program to reach the end of the method. So Java is satisfied.
 
+
         //M3:
-        int n1 = s1.length();
-        int n2 = s2.length();
+        // int n1 = s1.length();
+        // int n2 = s2.length();
 
-        if(n1 != n2) return false;
+        // if(n1 != n2) return false;
 
-        int[] word = new int[256];
-        for(int i = 0; i < n1; i++) {
-            word[s1.charAt(i)]++;
+        // int[] word = new int[256];
+        // for(int i = 0; i < n1; i++) {
+        //     word[s1.charAt(i)]++;
+        // }
+
+        // for(int i = 0; i < n1; i++) {
+        //     word[s2.charAt(i)]--;
+
+        //     if(word[s2.charAt(i)] < 0) {
+        //         return false;
+        //     }
+        // }
+
+        // return true;
+
+        // M4:
+        if (s.length() != t.length()) {
+            return false;
         }
 
-        for(int i = 0; i < n1; i++) {
-            word[s2.charAt(i)]--;
+        int[] freq = new int[26];
 
-            if(word[s2.charAt(i)] < 0) {
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'a']++;
+            freq[t.charAt(i) - 'a']--;
+        }
+
+        for (int count : freq) {
+            if (count != 0) {
                 return false;
             }
         }
