@@ -10,7 +10,7 @@ class Solution {
         int l = 0, r = 0, cnt = 0, sum = 0;
 
         while(r < n) {
-            sum += nums[r] % 2; // changes in 930
+            sum += nums[r] % 2; // changes in 930 -> sir directly modify arr 
 
             while(sum > goal) {
                 sum -= nums[l] % 2; // changes in 930
