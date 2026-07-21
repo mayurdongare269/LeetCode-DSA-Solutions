@@ -28,7 +28,7 @@ class Solution {
         while(r < n) {
             if(hash[s.charAt(r)] != -1) { // in the map 
                 if(hash[s.charAt(r)] >= l) {
-                    l = Math.max(hash[s.charAt(r)] + 1, l);
+                    l = Math.max(hash[s.charAt(r)] + 1, l); //update the left 
                 }
             }
             int len = r - l + 1;
