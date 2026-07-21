@@ -24,20 +24,20 @@ class Solution {
 
         //M2: 
 
-        // s = s.toLowerCase();
-        // t = t.toLowerCase();
+        s = s.toLowerCase();
+        t = t.toLowerCase();
 
-        // if(s.length() == t.length()) {
-        //     char[] s1 = s.toCharArray();
-        //     char[] s2 = t.toCharArray();
+        if(s.length() == t.length()) {
+            char[] s1 = s.toCharArray();
+            char[] s2 = t.toCharArray();
 
-        //     Arrays.sort(s1);
-        //     Arrays.sort(s2);
+            Arrays.sort(s1);
+            Arrays.sort(s2);
 
-        //     return Arrays.equals(s1, s2);
-        // } else {
-        //     return false; 
-        // }
+            return Arrays.equals(s1, s2);
+        } else {
+            return false; 
+        }
         //no return at last 
         //beacuse There is no way for the program to reach the end of the method. So Java is satisfied.
 
@@ -63,24 +63,26 @@ class Solution {
 
         // return true;
 
+
+
         // M4:
-        if (s.length() != t.length()) {
-            return false;
-        }
+        // if (s.length() != t.length()) {
+        //     return false;
+        // }
 
-        int[] freq = new int[26];
+        // int[] freq = new int[26];
 
-        for (int i = 0; i < s.length(); i++) {
-            freq[s.charAt(i) - 'a']++;
-            freq[t.charAt(i) - 'a']--;
-        }
+        // for (int i = 0; i < s.length(); i++) {
+        //     freq[s.charAt(i) - 'a']++;
+        //     freq[t.charAt(i) - 'a']--;
+        // }
 
-        for (int count : freq) {
-            if (count != 0) {
-                return false;
-            }
-        }
+        // for (int count : freq) {
+        //     if (count != 0) {
+        //         return false;
+        //     }
+        // }
 
-        return true;
+        // return true;
     }
 }
