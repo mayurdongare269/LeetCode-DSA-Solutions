@@ -19,7 +19,7 @@ class Solution {
                 break;
         }
 
-        return first.substring(0, i);
+        return first.substring(0, i); // here no i+1 bz start from zero... 
 
 
         // //M-II: optimal TC:(O(n x m)) -not understanded
