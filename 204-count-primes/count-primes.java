@@ -6,14 +6,14 @@ class Solution {
             return 0;
         }
 
-        boolean[] prime = new boolean[n];
+        boolean[] prime = new boolean[n]; // strictly less than hence n 
 
         Arrays.fill(prime, true);
 
         prime[0] = false;
         prime[1] = false;
 
-        for (int i = 2; i * i < n; i++) {
+        for (int i = 2; i * i < n; i++) { //strictly less than hence < only not <=
 
             if (prime[i]) {
 
