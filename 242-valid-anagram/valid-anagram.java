@@ -48,8 +48,8 @@ class Solution {
 
         // if(n1 != n2) return false;
 
-        // int[] word = new int[256];
-        // for(int i = 0; i < n1; i++) {
+        // int[] word = new int[256]; 
+        // for(int i = 0; i < n1; i++) { // another mehod: for(char ch : s.toCharArray())
         //     word[s1.charAt(i)]++;
         // }
 
