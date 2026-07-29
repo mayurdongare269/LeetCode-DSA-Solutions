@@ -27,7 +27,7 @@ class Solution {
         //     nums1[i] = arr[i];
         // }
 
-        //2. Method 2 optimal
+        //2. Method 2 optimal TC: O(n+m) SC: O(1)
         int i = m - 1;
         int j = n - 1;
         int k = m + n - 1;
