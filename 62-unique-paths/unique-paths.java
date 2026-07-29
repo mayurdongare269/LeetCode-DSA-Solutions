@@ -16,7 +16,7 @@ class Solution {
     }
 
     public static int func(int i, int j, int[][] dp) {// memoization
-        if(i == 0 && j == 0) return 1; 
+        if(i == 0 && j == 0) return 1; //imp remember
 
         if(i < 0 || j < 0) return 0;
 
@@ -50,6 +50,6 @@ class Solution {
             }
         }
 
-        return dp[n][m];
+        return dp[n][m]; // as i take +1 size of dp so here no need to -1
     }
 }
