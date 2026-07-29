@@ -10,7 +10,7 @@ class Solution {
             st.add(nums[i]);
         }
 
-        for(int it : st) {
+        for(int it : st) { // here loop on set, not on nums....**********
             if(!st.contains(it - 1)) {
                 int cnt = 1;
                 int x = it;
