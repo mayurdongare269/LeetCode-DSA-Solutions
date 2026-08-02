@@ -109,7 +109,10 @@ class Solution { // code story with MIC video... after that solve 877. Stone Gam
     // Space Complexity: O(N)
     // ============================================================
 
-    // Returns the score difference (Player1 - Player2)
+    // Returns the score difference (Player1 - Player2) - memoization
+
+    int dp[][];
+
     public int solve(int[] nums, int i, int j) {
 
         if (i > j) {
@@ -120,13 +123,24 @@ class Solution { // code story with MIC video... after that solve 877. Stone Gam
             return nums[i];
         }
 
+        if(dp[i][j] != -1) {
+            return dp[i][j];
+        }
+
         int takeLeft = nums[i] - solve(nums, i + 1, j);
         int takeRight = nums[j] - solve(nums, i, j - 1);
 
-        return Math.max(takeLeft, takeRight);
+        return dp[i][j] = Math.max(takeLeft, takeRight);
     }
 
     public boolean predictTheWinner(int[] nums) {
-        return solve(nums, 0, nums.length - 1) >= 0;
+        int n = nums.length;
+        dp = new int[23][23];
+
+        for(int[] row : dp) {
+            Arrays.fill(row, -1);
+        }
+        
+        return solve(nums, 0, nums.length - 1) >= 0; // if differenc is more than 0 then true.
     }
 }
