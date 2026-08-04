@@ -1,21 +1,21 @@
 class Solution {
     public List<Integer> findMissingElements(int[] nums) {
-        int n = nums.length;
-        Arrays.sort(nums);
 
-        int small = nums[0];
-        int large = nums[n-1];
+        int small = Integer.MAX_VALUE;
+        int large = Integer.MIN_VALUE;
 
-        Set<Integer> set = new HashSet<>();
-        List<Integer> ans = new ArrayList<>();
+        HashSet<Integer> set = new HashSet<>();
 
-        int[] freq = new int[n];
-        for(int num : nums) {
+        for (int num : nums) {
+            small = Math.min(small, num);
+            large = Math.max(large, num);
             set.add(num);
         }
 
-        for(int i = small; i <= large; i++) {
-            if(!set.contains(i)) {
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = small; i <= large; i++) {
+            if (!set.contains(i)) {
                 ans.add(i);
             }
         }
