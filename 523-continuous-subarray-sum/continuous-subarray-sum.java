@@ -3,8 +3,8 @@ class Solution { //sliding window not possible!!!
         //see video if forgot!!! -> // codewithmic video..
 
         int n = nums.length;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
+        Map<Integer, Integer> map = new HashMap<>(); // to store remainder & index
+        map.put(0, -1); //edge case
 
         int sum = 0;
 
@@ -12,7 +12,7 @@ class Solution { //sliding window not possible!!!
             sum += nums[i];
             int remainder = sum % k;
 
-            if(map.containsKey(remainder)) {
+            if(map.containsKey(remainder)) { // if its present in map or not (past madhe present aahe ka te bagh)
                 if(i - map.get(remainder) >= 2) {
                     return true;
                 } 
