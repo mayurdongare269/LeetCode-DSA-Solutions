@@ -57,7 +57,7 @@ class Solution {
         // s = s.trim();
         
         // // Step 2: Split by one or more spaces
-        // String[] words = s.split("\\s+");
+        // String[] words = s.split("\\s+"); // here " " not possible beacuase there can be multiple spaces 
         
         // // Step 3: Reverse the array
         // StringBuilder result = new StringBuilder();
