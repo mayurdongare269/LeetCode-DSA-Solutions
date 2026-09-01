@@ -2,21 +2,22 @@ class Solution {
     public void rotate(int[] nums, int k) {
         int n = nums.length;
 
-        k = k % n; //  nhi toh Runtime Error
+        k = k % n;
 
-        reverse(nums, 0, n-1);
-        reverse(nums, 0, k-1);
-        reverse(nums, k, n-1);
+        rotate(nums, 0, n - 1);
+        rotate(nums, 0, k-1);
+        rotate(nums, k, n-1);
     }
 
-    private void reverse(int[] arr, int left, int right) {
-        while(left < right) {
-            int temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
+    public void rotate(int[] nums, int i, int j) {
 
-            left++;
-            right--;
+        while(i < j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+
+            i++; j--;
         }
+        
     }
 }
