@@ -38,10 +38,10 @@ class Solution {
 
     /*
     =====================================================
-    PREVIOUS 2 APPROACHES
+     2 APPROACHES
     =====================================================
 
-    // 1️⃣ RECURSION + MEMOIZATION
+    // 1️⃣ RECURSION + MEMOIZATION - done ...  (MIK video)
     //
     // int[][] memo;
     //
